@@ -2,7 +2,7 @@ import crud as cr
 import logger as lg
 
 
-print('\nВас приветствует телефонная книга')
+print('\nСОТРУДНИКИ КОМПАНИИ')
 
 
 def ls_menu():
@@ -48,9 +48,9 @@ def ls_menu():
             lg.logging.info('User entered: {surname}')
             number = input('Введите номер телефона: ')
             lg.logging.info('User entered: {number}')
-            email = input('Введите электронную почту: ')
-            lg.logging.info('User entered: {email}')
-            cr.create(name, surname, number, email)
+            position = input('Введите должность: ')
+            lg.logging.info('User entered: {position}')
+            cr.create(name, surname, number, position)
 
         elif n == 6:
             lg.logging.info('The user has selected item number 6')

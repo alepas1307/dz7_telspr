@@ -3,15 +3,15 @@ import csv
 import logger as lg
 
 
-file = open('base_phone.csv', 'w')
-newrecord = "ID,Name,Surname,PhoneNumber,email\n"
+file = open('employees.csv', 'w')
+newrecord = "ID,Name,Surname,PhoneNumber,Position\n"
 file.writelines(newrecord)
 
 ls_name = ['Svetlana', 'Olga', 'Anton', 'Anna', 'Inna',
            'Viktor', 'Vasilisa', 'Alex', 'Miron', 'Igor', 'Anna']
 ls_surname = ['Kovalenko', 'Sidorenko', 'Mironenko',
               'Galich', 'Shapiro', 'Duma', 'Duma', 'Shagal', 'Moroz']
-ls_e_mail = ['@gmail.com', '@yandex.ru', '@mail.ru']
+ls_position = ['director', 'accountant', 'secretary', 'manager']
 
 
 def list_of_numbers():
@@ -25,7 +25,7 @@ def list_of_numbers():
 def string_creation():
     s = ""
     s = s + random.choice(ls_name) + ',' + random.choice(ls_surname) + ',' + \
-        list_of_numbers() + ',' + random.choice(ls_surname) + random.choice(ls_e_mail)
+        list_of_numbers() + ',' + random.choice(ls_surname) + random.choice(ls_position)
     return s
 
 

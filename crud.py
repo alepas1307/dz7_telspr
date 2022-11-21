@@ -26,7 +26,7 @@ def init_data_base(file_name='db.csv'):
         open(db_file_name, 'w', newline='').close()
 
 
-def create(name='', surname='', number='', email=''):
+def create(name='', surname='', number='', position=''):
     global global_id
     global db
     global db_file_name
@@ -39,18 +39,18 @@ def create(name='', surname='', number='', email=''):
     if(number == ''):
         print("ALARM NO TELEPHONE NUMBER SPECIFIED!")
         return
-    if(email == ''):
-        print("ALARM NO EMAIL SPECIFIED!")
+    if(position == ''):
+        print("ALARM NO POSITION SPECIFIED!")
         return
 
     for row in db:
-        if(row[1] == name.title() and row[2] == surname.title() and row[3] == number and row[4] == email.lower()):
+        if(row[1] == name.title() and row[2] == surname.title() and row[3] == number and row[4] == position.title()):
             print("already exist")
             return
 
     global_id += 1
     new_row = [str(global_id), name.title(),
-               surname.title(), number, email.lower()]
+               surname.title(), number, position.title()]
     db.append(new_row)
     with open(db_file_name, 'a', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=',',
@@ -59,7 +59,7 @@ def create(name='', surname='', number='', email=''):
 
 
 # поиск (если нужно выгрузить все: result = retrive())
-def retrive(id='', name='', surname='', number='', email=''):
+def retrive(id='', name='', surname='', number='', position=''):
     global global_id
     global db
     global db_file_name
@@ -73,7 +73,7 @@ def retrive(id='', name='', surname='', number='', email=''):
             continue
         if(number != '' and row[3] != number):
             continue
-        if(email != '' and row[3] != email.lower()):
+        if(position != '' and row[3] != position.title()):
             continue
         result.append(row)
     if len(result) == 0:
@@ -83,7 +83,7 @@ def retrive(id='', name='', surname='', number='', email=''):
         return result
 
 
-def update(id='', new_name='', new_surname='', new_number='', new_email=''):
+def update(id='', new_name='', new_surname='', new_number='', new_position=''):
     global global_id
     global db
     global db_file_name
@@ -104,8 +104,8 @@ def update(id='', new_name='', new_surname='', new_number='', new_email=''):
                 if(new_number != ''):
                     row[3] = new_number
 
-                if(new_email != ''):
-                    row[3] = new_email.lower()
+                if(new_position != ''):
+                    row[3] = new_position.title()
 
             writer.writerow(row)
 
